@@ -29,19 +29,7 @@ ryuji.on('message', function(message) {
 			
 			message.channel.send("Hey, man! Language!")
 
-		} else if(message.content.includes('delete')) {
-			console.log(message.author.tag)
-
-			message.channel.fetchMessages().then(collected => { //collected is a Collection
-				collected.forEach(msg => {
-					console.log(msg.content)
-					console.log(msg.author.tag)
-					console.log(msg.createdAt.getDate())
-					if(msg.createdAt.getDate() == 21 && msg.author.tag != "notgodzilla#9593") msg.delete(); 
-				})
-			}).catch(console.error)
-
-		}else {
+		} else {
 
 			var length = Object.keys(random).length - 1 
 			var i = generateRandomNumber(length)
