@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "broseiden": "^1.0.2",
     "discord.js": "^11.4.2",
-    "dog-facts": "^1.0.3"
+    "dog-facts": "^1.0.3",
+    "nicejob": "^1.0.1",
+    "wonderful": "^1.0.1"
   }
 }

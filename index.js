@@ -4,10 +4,15 @@ var random  = require('./random.json')
 var motivational = require('./motivational.json')
 var people = require('./people.json')
 
+//TODO These aren't being used yet 
+const Broseiden = require('broseiden')
+const Wonderful  = require('wonderful')
+const NiceJob = require('nicejob')
+
 const Discord = require('discord.js')
 const DogFacts = require('dog-facts')
-
 const ryuji = new Discord.Client()
+
 //const welcomeServerId = 533510779240972299 - welcome channel for actual server
 const welcomeServerId = 537447847059259412 // welcome channel id for test server 
 
@@ -26,7 +31,8 @@ ryuji.on('guildMemberAdd', (member) => {
 
 ryuji.on('message', function(message) {
 
-	//TODO Use this to parse 'hey, ryuji!' command
+	//TODO Use this to parse entire message to lowercase
+	//CURRENTLY NOT BEING USED 
 	var msgSent = message.content.toLowerCase()
 
 	if(!message.author.bot && message.content.includes('hey, ryuji!')) {
@@ -52,15 +58,31 @@ ryuji.on('message', function(message) {
 			message.channel.send(msg)
 
 		} else if (message.content.includes('dog fact')) {
-			var randomDogFact = DogFacts.random() 
-			message.channel.send(randomDogFact)
-
-		}else {
+			message.channel.send(generateDogFact())
+		} else {
 			var reply = getRandomMessage(random)
 			message.channel.send(reply)
 		}
 	}
 })
+
+function generateDogFact() {			
+	var afterFactSentence = [
+		"Isn't that shit cool?!", 
+		"Freakin' awesome, right?!", 
+		"Did ya know that?",
+		"Cool, right?",
+		"Crazy, right?",
+		"Freakin' cool!"]
+	
+	var randomDogFact = DogFacts.random() 
+	var end = afterFactSentence[Math.floor(Math.random()*afterFactSentence.length)]
+	return `${randomDogFact} ${end}`
+}
+
+function trueOrFalse() {
+	return Math.round(Math.random()) == 1 
+}
 
 function getRandomMessage(messageSource) {
 	var length = Object.keys(messageSource).length - 1 
