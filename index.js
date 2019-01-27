@@ -5,6 +5,8 @@ var motivational = require('./motivational.json')
 var people = require('./people.json')
 
 const Discord = require('discord.js')
+const DogFacts = require('dog-facts')
+
 const ryuji = new Discord.Client()
 //const welcomeServerId = 533510779240972299 - welcome channel for actual server
 const welcomeServerId = 537447847059259412 // welcome channel id for test server 
@@ -13,7 +15,8 @@ const welcomeServerId = 537447847059259412 // welcome channel id for test server
 const phantomThieves = ['akira', 'ann', 'makoto', 'yusuke', 'futaba', 'haru', 'morgana', 'akechi']
 const adults = ['sae', 'sojiro', 'ma']
 
-const welcomeMessage = "HEY, BRO! Welcome to RYUJI PARADISE! Read the #ryuji-rules and introduce yourself here, telling us why you love ME, the GREAT RYUJI SAKAMOTO, and don't forget to include your age (if you're 18+)!"
+const welcomeMessage = 
+"HEY, BRO! Welcome to RYUJI PARADISE! Read the #ryuji-rules and introduce yourself here, telling us why you love ME, the GREAT RYUJI SAKAMOTO, and don't forget to include your age (if you're 18+)!"
 
 ryuji.on('guildMemberAdd', (member) => {
   const welcomeChannel = ryuji.channels.find(channel => channel.id == welcomeServerId)
@@ -23,6 +26,7 @@ ryuji.on('guildMemberAdd', (member) => {
 
 ryuji.on('message', function(message) {
 
+	//TODO Use this to parse 'hey, ryuji!' command
 	var msgSent = message.content.toLowerCase()
 
 	if(!message.author.bot && message.content.includes('hey, ryuji!')) {
@@ -31,16 +35,12 @@ ryuji.on('message', function(message) {
 
 		if(message.content.includes('love')) {
 
-			var length = Object.keys(love).length - 1 
-			var i = generateRandomNumber(length)
-			var reply = love[i]
+			var reply = getRandomMessage(love)
 			message.channel.send(reply)
 
 		} else if(message.content.includes('depressed') || message.content.includes('sad') || message.content.includes('strength')) {
 
-			var length = Object.keys(motivational).length - 1 
-			var i = generateRandomNumber(length)
-			var reply = motivational[i]
+			var reply = getRandomMessage(motivational)
 			message.channel.send(reply)
 
 		} else if (message.content.includes('fuck')) {
@@ -51,15 +51,22 @@ ryuji.on('message', function(message) {
 			var msg = people["akechi"]['0']
 			message.channel.send(msg)
 
-		} else {
+		} else if (message.content.includes('dog fact')) {
+			var randomDogFact = DogFacts.random() 
+			message.channel.send(randomDogFact)
 
-			var length = Object.keys(random).length - 1 
-			var i = generateRandomNumber(length)
-			var reply = random[i]
+		}else {
+			var reply = getRandomMessage(random)
 			message.channel.send(reply)
 		}
 	}
 })
+
+function getRandomMessage(messageSource) {
+	var length = Object.keys(messageSource).length - 1 
+	var i = generateRandomNumber(length)
+	return messageSource[i]
+}
 
 function generateRandomNumber(maximum) {
 	var randomIndex = Math.floor(Math.random() * (maximum+1))
