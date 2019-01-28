@@ -1,33 +1,26 @@
 {
-	"akira": {
-		"0": "We have an inseparable bond, like cellmates! Shit, wait",
-		"1": "I wanted to propose to Akira with a ringpop once but I got hungry and ate it.",
-		"2": "Akira? I freakin' love that guy!",
-		"3": "Fellas is it gay to love your bro as much as I love Akira?"
-	},
-	"mona": {
-		"0": "I love Morgana like a brother! He's my least favourite brother.",
-		"1": "One time I slept over Akira's and Morgana rolled all over my stuff and got cat hair everywhere"
-	}, 
-	"akechi" : {
-		"0": "One time I found Akechi's journal and didn't know it was an journal and thought it was just a very sad handwritten book."
-	},
-	"ann": {
-		"0": "Ann wanted to get crepes one time but I didn't wanna tell her no because I'm lactose intolerant so I was just gassy the whole day."
-	},
-	"makoto": {
-
-	},
-	"futaba": {
-
-	},
-	"yusuke": {
-
-	},
-	"haru": {
-		"0": "Haru's so pretty!",
-		"1": "Man, you know what I'm pretty sure Haru-senpai can probably kick my ass.",
-		"2": "Can you believe Haru beat me in arm wrestling once?!",
-		"3": ""
-	}
+	"akira": [
+		"We have an inseparable bond, like cellmates! Shit, wait",
+		"I wanted to propose to Akira with a ringpop once but I got hungry and ate it.",
+		"Akira? I freakin' love that guy!",
+		"Fellas is it gay to love your bro as much as I love Akira?"
+	],
+	"mona": [
+		"I love Morgana like a brother! He's my least favourite brother.",
+		"One time I slept over Akira's and Morgana rolled all over my stuff and got cat hair everywhere"
+	], 
+	"akechi" : [
+		"One time I found Akechi's journal and didn't know it was an journal and thought it was just a very sad handwritten book."
+	],
+	"ann": [
+		"Ann wanted to get crepes one time but I didn't wanna tell her no because I'm lactose intolerant so I was just gassy the whole day."
+	],
+	"makoto": [],
+	"futaba": [],
+	"yusuke": [],
+	"haru": [
+		"Haru's so pretty!",
+		"Man, you know what I'm pretty sure Haru-senpai can probably kick my ass.",
+		"Can you believe Haru beat me in arm wrestling once?!"
+	]
 }

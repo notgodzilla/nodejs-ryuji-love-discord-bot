@@ -4,6 +4,9 @@ var random  = require('./random.json')
 var motivational = require('./motivational.json')
 var people = require('./people.json')
 
+//TODO NOT BEING USED 
+var compliments = require('./compliments')
+
 //TODO These aren't being used yet 
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
@@ -12,6 +15,8 @@ const NiceJob = require('nicejob')
 const Discord = require('discord.js')
 const DogFacts = require('dog-facts')
 const ryuji = new Discord.Client()
+
+const uniqueRandomArray = require('unique-random-array')
 
 //const welcomeServerId = 533510779240972299 - welcome channel for actual server
 const welcomeServerId = 537447847059259412 // welcome channel id for test server 
@@ -38,30 +43,29 @@ ryuji.on('message', function(message) {
 	if(!message.author.bot && message.content.includes('hey, ryuji!')) {
 		//console.log(message.author.tag)
 		//console.log(message.content)
-
 		if(message.content.includes('love')) {
 
-			var reply = getRandomMessage(love)
-			message.channel.send(reply)
+			var loveReply = uniqueRandomArray(love)
+			message.channel.send(loveReply())
 
 		} else if(message.content.includes('depressed') || message.content.includes('sad') || message.content.includes('strength')) {
 
-			var reply = getRandomMessage(motivational)
-			message.channel.send(reply)
+			var motivationalReply = uniqueRandomArray(motivational)
+			message.channel.send(motivationalReply())
 
 		} else if (message.content.includes('fuck')) {
 			message.channel.send("Hey, man! Language!")
 
 		//TODO add the rest of the phantom thieves 
 		} else if(message.content.includes('akechi') || message.content.includes('goro')) {
-			var msg = people["akechi"]['0']
-			message.channel.send(msg)
+			var msg = uniqueRandomArray(people['akechi'])
+			message.channel.send(msg())
 
 		} else if (message.content.includes('dog fact')) {
 			message.channel.send(generateDogFact())
 		} else {
-			var reply = getRandomMessage(random)
-			message.channel.send(reply)
+			var randomReply = uniqueRandomArray(random)
+			message.channel.send(randomReply())
 		}
 	}
 })
