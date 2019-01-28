@@ -3,20 +3,21 @@ var love = require('./love.json')
 var random  = require('./random.json')
 var motivational = require('./motivational.json')
 var people = require('./people.json')
+var compliments = require('./compliments.json')
 
-//TODO NOT BEING USED 
-var compliments = require('./compliments')
-
-//TODO These aren't being used yet 
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
+
+
+//TODO These aren't being used yet 
 const NiceJob = require('nicejob')
+
+const uniqueRandomArray = require('unique-random-array')
 
 const Discord = require('discord.js')
 const DogFacts = require('dog-facts')
 const ryuji = new Discord.Client()
 
-const uniqueRandomArray = require('unique-random-array')
 
 //const welcomeServerId = 533510779240972299 - welcome channel for actual server
 const welcomeServerId = 537447847059259412 // welcome channel id for test server 
@@ -41,17 +42,32 @@ ryuji.on('message', function(message) {
 	var msgSent = message.content.toLowerCase()
 
 	if(!message.author.bot && message.content.includes('hey, ryuji!')) {
+
 		//console.log(message.author.tag)
 		//console.log(message.content)
+
 		if(message.content.includes('love')) {
 
-			var loveReply = uniqueRandomArray(love)
-			message.channel.send(loveReply())
+			var wonderfulWord = Wonderful.random()
+			var getLoveEmoji = trueOrFalse() ? "softryuji" : "ryujilovesyou"
+			var loveEmoji = (message.guild.emojis.find(emoji => emoji.name == getLoveEmoji))
+			message.react(loveEmoji)
+			message.channel.send(`${getRandomMessage(love)} You're freakin' ${wonderfulWord}, man!`)
+
 
 		} else if(message.content.includes('depressed') || message.content.includes('sad') || message.content.includes('strength')) {
 
-			var motivationalReply = uniqueRandomArray(motivational)
-			message.channel.send(motivationalReply())
+			//Randomizes compliments / motivational quotes
+			if(trueOrFalse()) {
+				var broWord = Broseiden()
+				var wonderfulWord = Wonderful.random()
+				var complimentSentence = getRandomMessage(compliments)
+				var fullSentence = `Hey, ${broWord} ! Don't be sad. You're pretty ${wonderfulWord}! ${complimentSentence}`
+				message.channel.send(fullSentence)
+
+			} else {
+				message.channel.send(getRandomMessage(motivational))
+			}
 
 		} else if (message.content.includes('fuck')) {
 			message.channel.send("Hey, man! Language!")
@@ -64,8 +80,7 @@ ryuji.on('message', function(message) {
 		} else if (message.content.includes('dog fact')) {
 			message.channel.send(generateDogFact())
 		} else {
-			var randomReply = uniqueRandomArray(random)
-			message.channel.send(randomReply())
+			message.channel.send(getRandomMessage(random))
 		}
 	}
 })
@@ -89,14 +104,8 @@ function trueOrFalse() {
 }
 
 function getRandomMessage(messageSource) {
-	var length = Object.keys(messageSource).length - 1 
-	var i = generateRandomNumber(length)
-	return messageSource[i]
-}
-
-function generateRandomNumber(maximum) {
-	var randomIndex = Math.floor(Math.random() * (maximum+1))
-	 return randomIndex.toString()
+	var randomMessage = uniqueRandomArray(messageSource)
+	return randomMessage() 
 }
 
 ryuji.login(auth.TOKEN)
