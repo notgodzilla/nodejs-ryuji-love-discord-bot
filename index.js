@@ -4,6 +4,7 @@ var random  = require('./random.json')
 var motivational = require('./motivational.json')
 var people = require('./people.json')
 var compliments = require('./compliments.json')
+var specific  = require('./specificResponses.json')
 
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
@@ -24,7 +25,10 @@ const welcomeServerId = 537447847059259412 // welcome channel id for test server
 
 //TODO Use these for randomly generated stories 
 const phantomThieves = ['akira', 'ann', 'makoto', 'yusuke', 'futaba', 'haru', 'morgana', 'akechi']
-const adults = ['sae', 'sojiro', 'ma']
+const foodKeywords = ['ramen', 'takoyaki','meat','beef bowl','beef','curry', 'food', 'eat']
+const sleepKeywords = ['bed', 'sleep', 'bedtime']
+const complimentsKeywords = ['cute', 'sexy', 'baby', 'hot', 'handsome']
+const specificResponseKeywords = ['kamoshida', 'mom', 'running', 'phantom thieves', 'knee', 'did you know', 'run']
 
 const welcomeMessage = 
 "HEY, BRO! Welcome to RYUJI PARADISE! Read the #ryuji-rules and introduce yourself here, telling us why you love ME, the GREAT RYUJI SAKAMOTO, and don't forget to include your age (if you're 18+)!"
@@ -37,16 +41,15 @@ ryuji.on('guildMemberAdd', (member) => {
 
 ryuji.on('message', function(message) {
 
-	//TODO Use this to parse entire message to lowercase
-	//CURRENTLY NOT BEING USED 
+	//Converts entire message to lowercase so conditions aren't case sensitive 
 	var msgSent = message.content.toLowerCase()
 
-	if(!message.author.bot && message.content.includes('hey, ryuji!')) {
+	if(!message.author.bot && msgSent.includes('hey, ryuji!')) {
 
 		//console.log(message.author.tag)
 		//console.log(message.content)
 
-		if(message.content.includes('love')) {
+		if(msgSent.includes('love')) {
 
 			var wonderfulWord = Wonderful.random()
 			var getLoveEmoji = trueOrFalse() ? "softryuji" : "ryujilovesyou"
@@ -55,10 +58,11 @@ ryuji.on('message', function(message) {
 			message.channel.send(`${getRandomMessage(love)} You're freakin' ${wonderfulWord}, man!`)
 
 
-		} else if(message.content.includes('depressed') || message.content.includes('sad') || message.content.includes('strength')) {
+		} else if(msgSent.includes('depressed') || msgSent.includes('sad') || msgSent.includes('strength')) {
 
 			//Randomizes compliments / motivational quotes
 			if(trueOrFalse()) {
+				
 				var broWord = Broseiden()
 				var wonderfulWord = Wonderful.random()
 				var complimentSentence = getRandomMessage(compliments)
@@ -69,21 +73,83 @@ ryuji.on('message', function(message) {
 				message.channel.send(getRandomMessage(motivational))
 			}
 
-		} else if (message.content.includes('fuck')) {
-			message.channel.send("Hey, man! Language!")
+		} else if (msgSent.includes('fuck')) {
 
-		//TODO add the rest of the phantom thieves 
-		} else if(message.content.includes('akechi') || message.content.includes('goro')) {
-			var msg = uniqueRandomArray(people['akechi'])
-			message.channel.send(msg())
+			if(msgSent.includes('say fuck')) {
+				message.channel.send("No way, man! What if my ma hears?!")
+			} else {
+				message.channel.send("Hey, man! Language!")
+			}
+		
+		} else if(checkForKeyword(msgSent, phantomThieves)) {
 
-		} else if (message.content.includes('dog fact')) {
+			var personMentioned = getKeywordResponse(msgSent, phantomThieves)
+			console.log(personMentioned)
+			var randomPersonResponse = uniqueRandomArray(people[personMentioned])
+			message.channel.send(randomPersonResponse()) 
+
+		} else if (checkForKeyword(msgSent, specificResponseKeywords)) {
+			var keywordMentioned = getKeywordResponse(msgSent, specificResponseKeywords)
+			console.log(keywordMentioned)
+			var randomKeywordResponse = uniqueRandomArray(specific[keywordMentioned])
+			message.channel.send(randomKeywordResponse()) 
+
+		} else if(checkForKeyword(msgSent, foodKeywords)) {
+			var foodResponse = uniqueRandomArray(specific['food'])
+			message.channel.send(foodResponse())
+
+		} else if(checkForKeyword(msgSent, sleepKeywords)) {
+
+			message.channel.send(specific['sleep'])
+
+		} else if (checkForKeyword(msgSent, complimentsKeywords)) {
+
+			var complimentsRespose = uniqueRandomArray(specific['compliment'])
+			message.channel.send(complimentsRespose())
+
+		} else if (checkForKeyword(msgSent, foodKeywords)) {
+
+			var foodRespose = uniqueRandomArray(specific['food'])
+			message.channel.send(foodRespose)
+		}
+		else if (msgSent.includes('dog fact')) {
+
 			message.channel.send(generateDogFact())
+
+		//Default random banter 	
 		} else {
 			message.channel.send(getRandomMessage(random))
 		}
 	}
 })
+
+//I'm tired factor this logic out when not tired 
+function checkForKeyword(msg, keywordArr) {
+	var msgArr = msg.split(" ")
+	var keywords = msgArr.filter( word => 
+		-1 !== keywordArr.indexOf(word))
+	return keywords.length > 0 
+}
+
+function getKeywordResponse(msg, keywordJSON) {
+	var msgArr = msg.split(" ")
+	var keywords = msgArr.filter( word => 
+		-1 !== keywordJSON.indexOf(word))
+
+	//If multiple keywords, pick randomly from array
+	var keywordMentionedResponse = uniqueRandomArray(keywords)
+	return keywordMentionedResponse()
+}
+
+function getPersonMentioned(msg) {
+	var msgArr = msg.split(" ")
+	var people = msgArr.filter( word => 
+		-1 !== phantomThieves.indexOf(word))
+
+	//If multiple people, pick randomly from array
+	var personMentioned = uniqueRandomArray(people)
+	return personMentioned()
+}
 
 function generateDogFact() {			
 	var afterFactSentence = [
