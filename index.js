@@ -8,11 +8,6 @@ var specific  = require('./specificResponses.json')
 
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
-
-
-//TODO These aren't being used yet 
-const NiceJob = require('nicejob')
-
 const uniqueRandomArray = require('unique-random-array')
 
 const Discord = require('discord.js')
@@ -24,11 +19,11 @@ const ryuji = new Discord.Client()
 const welcomeServerId = 537447847059259412 // welcome channel id for test server 
 
 //TODO Use these for randomly generated stories 
-const phantomThieves = ['akira', 'ann', 'makoto', 'yusuke', 'futaba', 'haru', 'morgana', 'akechi']
+const phantomThieves = Object.keys(people)
 const foodKeywords = ['ramen', 'takoyaki','meat','beef bowl','beef','curry', 'food', 'eat']
 const sleepKeywords = ['bed', 'sleep', 'bedtime']
 const complimentsKeywords = ['cute', 'sexy', 'baby', 'hot', 'handsome']
-const specificResponseKeywords = ['kamoshida', 'mom', 'running', 'phantom thieves', 'knee', 'did you know', 'run']
+const specificResponseKeywords = Object.keys(specific)
 
 const welcomeMessage = 
 "HEY, BRO! Welcome to RYUJI PARADISE! Read the #ryuji-rules and introduce yourself here, telling us why you love ME, the GREAT RYUJI SAKAMOTO, and don't forget to include your age (if you're 18+)!"
@@ -43,8 +38,17 @@ ryuji.on('message', function(message) {
 
 	//Converts entire message to lowercase so conditions aren't case sensitive 
 	var msgSent = message.content.toLowerCase()
+	console.log(msgSent)
+
 
 	if(!message.author.bot && msgSent.includes('hey, ryuji!')) {
+
+		msgSent = removePunctuation(msgSent)
+		var msgKeywordArray = msgSent.split(" ")
+	
+		console.log(msgSent)
+		console.log(msgSent.includes("phantom thieves"))
+		console.log(specificResponseKeywords)
 
 		//console.log(message.author.tag)
 		//console.log(message.content)
@@ -62,7 +66,7 @@ ryuji.on('message', function(message) {
 
 			//Randomizes compliments / motivational quotes
 			if(trueOrFalse()) {
-				
+
 				var broWord = Broseiden()
 				var wonderfulWord = Wonderful.random()
 				var complimentSentence = getRandomMessage(compliments)
@@ -81,33 +85,33 @@ ryuji.on('message', function(message) {
 				message.channel.send("Hey, man! Language!")
 			}
 		
-		} else if(checkForKeyword(msgSent, phantomThieves)) {
+		} else if(checkForKeyword(msgKeywordArray, phantomThieves)) {
 
-			var personMentioned = getKeywordResponse(msgSent, phantomThieves)
+			var personMentioned = getKeywordResponse(msgKeywordArray, phantomThieves)
 			console.log(personMentioned)
 			var randomPersonResponse = uniqueRandomArray(people[personMentioned])
 			message.channel.send(randomPersonResponse()) 
 
-		} else if (checkForKeyword(msgSent, specificResponseKeywords)) {
-			var keywordMentioned = getKeywordResponse(msgSent, specificResponseKeywords)
+		} else if (checkForKeyword(msgKeywordArray, specificResponseKeywords)) {
+			var keywordMentioned = getKeywordResponse(msgKeywordArray, specificResponseKeywords)
 			console.log(keywordMentioned)
 			var randomKeywordResponse = uniqueRandomArray(specific[keywordMentioned])
 			message.channel.send(randomKeywordResponse()) 
 
-		} else if(checkForKeyword(msgSent, foodKeywords)) {
+		} else if(checkForKeyword(msgKeywordArray, foodKeywords)) {
 			var foodResponse = uniqueRandomArray(specific['food'])
 			message.channel.send(foodResponse())
 
-		} else if(checkForKeyword(msgSent, sleepKeywords)) {
+		} else if(checkForKeyword(msgKeywordArray, sleepKeywords)) {
+	
+			message.channel.send("Sleep?😂 I don't know that word😴 while you taking Z's 💤 I 🅱️ stealin' hearts ❤️🖤❤️U snooze you lose😤🤘Phantom 🃏Thieves 4 Life ☠️☠️☠️ SKULL ☠️☠️☠️")
 
-			message.channel.send(specific['sleep'])
-
-		} else if (checkForKeyword(msgSent, complimentsKeywords)) {
+		} else if (checkForKeyword(msgKeywordArray , complimentsKeywords)) {
 
 			var complimentsRespose = uniqueRandomArray(specific['compliment'])
 			message.channel.send(complimentsRespose())
 
-		} else if (checkForKeyword(msgSent, foodKeywords)) {
+		} else if (checkForKeyword(msgKeywordArray, foodKeywords)) {
 
 			var foodRespose = uniqueRandomArray(specific['food'])
 			message.channel.send(foodRespose)
@@ -124,15 +128,13 @@ ryuji.on('message', function(message) {
 })
 
 //I'm tired factor this logic out when not tired 
-function checkForKeyword(msg, keywordArr) {
-	var msgArr = msg.split(" ")
+function checkForKeyword(msgArr, keywordArr) {
 	var keywords = msgArr.filter( word => 
 		-1 !== keywordArr.indexOf(word))
 	return keywords.length > 0 
 }
 
-function getKeywordResponse(msg, keywordJSON) {
-	var msgArr = msg.split(" ")
+function getKeywordResponse(msgArr, keywordJSON) {
 	var keywords = msgArr.filter( word => 
 		-1 !== keywordJSON.indexOf(word))
 
@@ -141,8 +143,7 @@ function getKeywordResponse(msg, keywordJSON) {
 	return keywordMentionedResponse()
 }
 
-function getPersonMentioned(msg) {
-	var msgArr = msg.split(" ")
+function getPersonMentioned(msgArr) {
 	var people = msgArr.filter( word => 
 		-1 !== phantomThieves.indexOf(word))
 
@@ -167,6 +168,10 @@ function generateDogFact() {
 
 function trueOrFalse() {
 	return Math.round(Math.random()) == 1 
+}
+
+function removePunctuation(msg) {
+	return msg.replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"")
 }
 
 function getRandomMessage(messageSource) {
