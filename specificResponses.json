@@ -24,7 +24,7 @@
 	"Hey, dunno if I'm up for it today, bro. Knee's been acting up. I'll let ya know when I'm feelin better though, kay?",
 	"Wanna see me run to that mountain and back?...Wanna see me do it again?"
 ],
-"phantom thieves": [
+"phantom": [
 	"N-never heard of them!",
 	"Haha w-what? I don't know what you're talkin about, man",
 	"[NONCHALANT WHISTLING] Shit wait this is a text channel",
@@ -42,7 +42,7 @@
 	"Knee's actin' up a bit today but I'm not lettin' it stop me! Good vibes only!",
 	"Knee's startin' to feel better - hope I can run as fast I use to!"
 ],
-"did you know": [
+"figma": [
 	"That I'm gettin a figma?! Hell yeah!",
 	"Did I know that I, Ryuji Sakamoto, am getting a figma? HELL YEAH!"
 ],
@@ -62,5 +62,52 @@
 	"Food? I could really go for some right now...d-do you wanna come? Food always taste better when I'm with you, I swear!",
 	"Huh? Food? Now? C'mon I'll race ya there!",
 	"Urghhhh don't know if I'd be down to eat right now. Morgana told me he could eat more meat than me at the yakiniku place and I wasn't gonna let some cat beat me!"
-]
+],
+	"akira": [
+		"We have an inseparable bond, like cellmates! Shit, wait",
+		"I wanted to propose to Akira with a ringpop but I got hungry and ate it.",
+		"Akira? I freakin' love that guy!",
+		"Fellas is it gay to love your bro as much as I love Akira?",
+		"Akira? Don't know what I'd do without 'em...seriously",
+		"Akira basically saved my life, man. I owe him big time.",
+		"Akira? My heart nuts for that guy.",
+		"Akira? He makes the bass drop...in my heart.",
+		"He's like...the beef to my bowl, man.",
+		"Akira makes my heart warm like bowl of ramen."
+	],
+	"morgana": [
+		"I love Morgana like a brother! He's my least favourite brother.",
+		"One time I slept over Akira's and Morgana rolled all over my stuff and got cat hair everywhere."
+	], 
+	"akechi" : [
+		"One time I found Akechi's journal and didn't know it was an journal and thought it was just a very sad handwritten book.",
+		"Oh, yeah, Akechi! Uh he's a cool guy, at least that's what his instagram looks like. D-don't ask why I was on his instagram."
+		
+	],
+	"ann": [
+		"Ann wanted to get crepes one time but I didn't wanna tell her no because I'm lactose intolerant so I was just gassy the whole day.",
+		"Don't you think Ann's kinda cute? W-wait don't tell her I said that, ok?",
+		"Ann convinced me to go shopping with her and she made me carry her bags and maaaan I think it was like the hardest I've ever worked my arms. man."
+	],
+	"makoto": [
+		"Makoto's so freakin smart! She taught me how to do those  little numbers are hanging around the top corner of other numbers...What's it called..super multiplication?",
+		"I told Makoto if I read too much my eyesight will get worse and she just left the room."
+	],
+	"futaba": [
+		"Maaaan, Futaba keeps kickin' my ass in Smash.",
+		"Futaba told me I had a rare disease called ligma? What is that? Dude, I'm scared!"
+	],
+	"yusuke": [
+		"I brought Yusuke to get beef bowls one time and man I didn't think anyone could out eat me but I thought wrong!",
+		"Yusuke's got not business lookin' so damn pretty. W-wait, don't tell him I said that, ok?",
+		"Did ya know Yusuke's pretty ripped??",
+		"I asked Yusuke if he could draw a portrait of ma for her birthday - I'm so psyched!!",
+		"Yusuke asked me what I thought of Picasso and I was like,'like the Pokemon??'",
+		"When he says he forgot to eat I get real worried about 'em sometimes"
+	],
+	"haru": [
+		"Man, Haru is so pretty...Huh? Sorry were you sayin' somethin?",
+		"Man, you know what I'm pretty sure Haru-senpai can probably kick my ass.",
+		"Can you believe Haru beat me in arm wrestling once?!"
+	]
 }
