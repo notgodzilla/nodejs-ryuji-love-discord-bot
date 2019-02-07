@@ -99,15 +99,25 @@ ryuji.on('message', function(message) {
 		} else if (msgUtils.checkForKeyword(msgKeywordArray, foodKeywords)) {
 
 			var foodRespose = uniqueRandomArray(specific['food'])
-			message.channel.send(foodRespose)
+			message.channel.send(foodRespose())
 
 		} else if(msgUtils.checkForKeyword(msgKeywordArray, affectionKeywords)) {
 
-			//TODO 
+			var keywordMentioned = msgUtils.getKeywordResponse(msgKeywordArray, affectionKeywords)
+			if(keywordMentioned == 'kiss') {
+				message.react('💋')
+			} else {
+				var getAffectionEmoji = msgUtils.trueOrFalse() ? "softryuji" : "flowersforyuji"
+				var affectionEmoji = (message.guild.emojis.find(emoji => emoji.name == getAffectionEmoji))
+				message.react(affectionEmoji)
+			}
+			var affectionKeywordResponse = uniqueRandomArray(affection[keywordMentioned])
+			message.channel.send(affectionKeywordResponse())
+
 		} else if (msgSent.includes('phantom thieves')) {
 
-			var foodRespose = uniqueRandomArray(specific['phantom'])
-			message.channel.send(foodRespose)
+			var phantomThievesResponse = uniqueRandomArray(specific['phantom'])
+			message.channel.send(phantomThievesResponse())
 
 		} else if (msgSent.includes('dog fact')) {
 
