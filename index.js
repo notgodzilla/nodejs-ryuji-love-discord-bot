@@ -5,14 +5,17 @@ const motivational = require('./motivational.json')
 const compliments = require('./compliments.json')
 const specific  = require('./specificResponses.json')
 const affection = require('./affection.json')
-const msgUtils = require('./msgUtils.js')
+const goodbye = require('./goodbye.json')
+
 
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
 const uniqueRandomArray = require('unique-random-array')
 
+const msgUtils = require('./msgUtils.js')
 const Discord = require('discord.js')
 const ryuji = new Discord.Client()
+
 
 
 //const welcomeServerId = 533510779240972299 - welcome channel for actual server
@@ -21,6 +24,7 @@ const welcomeServerId = 537447847059259412 // welcome channel id for test server
 const foodKeywords = ['ramen', 'takoyaki','meat','beef bowl','beef','curry', 'food', 'eat']
 const sleepKeywords = ['bed', 'sleep', 'bedtime']
 const complimentsKeywords = ['cute', 'sexy', 'baby', 'hot', 'handsome']
+const goodbyeKeywords = ['bye', 'goodbye', 'goodnight']
 const affectionKeywords = Object.keys(affection)
 const specificResponseKeywords = Object.keys(specific)
 
@@ -122,6 +126,11 @@ ryuji.on('message', function(message) {
 		} else if (msgSent.includes('dog fact')) {
 
 			message.channel.send(msgUtils.generateDogFact())
+
+	
+		} else if (msgUtils.checkForKeyword(msgKeywordArray, goodbyeKeywords)) {
+			message.react('👋')
+			message.channel.send(msgUtils.getRandomMessage(goodbye))
 
 		//Default random banter 	
 		} else {
