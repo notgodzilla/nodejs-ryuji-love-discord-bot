@@ -6,12 +6,12 @@ const compliments = require('./compliments.json')
 const specific  = require('./specificResponses.json')
 const affection = require('./affection.json')
 const goodbye = require('./goodbye.json')
-
-
+const selfieResponse = require('./selfieResponses.json')
 const Broseiden = require('broseiden')
 const Wonderful  = require('wonderful')
 const uniqueRandomArray = require('unique-random-array')
 
+const fs = require('fs')
 const msgUtils = require('./msgUtils.js')
 const Discord = require('discord.js')
 const ryuji = new Discord.Client()
@@ -31,6 +31,25 @@ const specificResponseKeywords = Object.keys(specific)
 const welcomeMessage = 
 "HEY, BRO! Welcome to RYUJI PARADISE! Read the #ryuji-rules and introduce yourself here, telling us why you love ME, the GREAT RYUJI SAKAMOTO, and don't forget to include your age (if you're 18+)!"
 
+let selfies = []
+const selfiesDir = './selfies/'
+
+ryuji.on('ready', function (evt) {
+	console.log('RYUJI READY TO ROCK AND ROLL!')
+
+	//Load selfies folder on start up
+	fs.readdir('./selfies', (err, files) => {
+		if(!err) {
+			files.forEach(file => {
+				selfies.push(file)
+
+			});
+		}	
+	})
+
+});
+
+
 ryuji.on('guildMemberAdd', (member) => {
   const welcomeChannel = ryuji.channels.find(channel => channel.id == welcomeServerId)
   var newMemberId = member.user.id 
@@ -46,7 +65,6 @@ ryuji.on('message', function(message) {
 
 		msgSent = msgUtils.removePunctuation(msgSent)
 		var msgKeywordArray = msgSent.split(" ")
-	
 
 		if(msgSent.includes('love')) {
 
@@ -127,13 +145,20 @@ ryuji.on('message', function(message) {
 
 			message.channel.send(msgUtils.generateDogFact())
 
-	
 		} else if (msgUtils.checkForKeyword(msgKeywordArray, goodbyeKeywords)) {
+
 			message.react('👋')
 			message.channel.send(msgUtils.getRandomMessage(goodbye))
 
-		//Default random banter 	
+
+		} else if(msgSent.includes('selfie')){
+
+			var randomSelfie = msgUtils.getRandomMessage(selfies)
+			var randomSelfieResponse = msgUtils.getRandomMessage(selfieResponse)
+			message.channel.send(randomSelfieResponse, {files: [`${selfiesDir}${randomSelfie}`]})
+
 		} else {
+			//Default random banter 	
 			message.channel.send(msgUtils.getRandomMessage(random))
 		}
 	}
