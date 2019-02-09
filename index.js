@@ -16,10 +16,8 @@ const msgUtils = require('./msgUtils.js')
 const Discord = require('discord.js')
 const ryuji = new Discord.Client()
 
-
-
-//const welcomeServerId = 533510779240972299 - welcome channel for actual server
-const welcomeServerId = 537447847059259412 // welcome channel id for test server 
+const welcomeServerId = 533511905516716032  //welcome channel for actual server
+//const welcomeServerId = 537447847059259412 // welcome channel id for test server 
 
 const foodKeywords = ['ramen', 'takoyaki','meat','beef bowl','beef','curry', 'food', 'eat']
 const sleepKeywords = ['bed', 'sleep', 'bedtime']

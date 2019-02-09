@@ -51,7 +51,8 @@
 	"ACHOO! Sorry man, I'm allergic to homework. Heh",
 	"W-what homework?!",
 	"We had homework?!",
-	"Shit we had homework? You think you could help me out, bro?"
+	"Shit we had homework? You think you could help me out, bro?",
+	"Ah shit...you think Makoto will lemme copy her homework...?!"
 ],
 "compliment":
 	[
@@ -80,42 +81,78 @@
 		"Akira? My heart nuts for that guy.",
 		"Akira? He makes the bass drop...in my heart.",
 		"He's like...the beef to my bowl, man.",
-		"Akira makes my heart warm like bowl of ramen."
+		"Akira makes my heart warm like bowl of ramen.",
+		"It’s weird man, when I hang out with him, my heart’s always hammerin’ like I just did sprints.",
+		"Trainin’ with Akira is my favorite part of the week!",
+		"Dude, Akira makes the best curry. Oh man, my mouth is totally waterin' just thinkin about him - I mean the curry! Y-yeah the curry. Heh"
 	],
 	"morgana": [
 		"I love Morgana like a brother! He's my least favourite brother.",
-		"One time I slept over Akira's and Morgana rolled all over my stuff and got cat hair everywhere."
+		"One time I slept over Akira's and Morgana rolled all over my stuff and got cat hair everywhere.",
+		"That damn cat…",
+		"The fur on Mona’s head is really freakin’ soft… H-hold up, don’t tell him I said that!",
+		"When I sleep over at Akira’s place, I keep wakin’ up with that damn cat asleep on my chest! I think he's tryin' to suffocate me."
+
 	], 
 	"akechi" : [
 		"One time I found Akechi's journal and didn't know it was an journal and thought it was just a very sad handwritten book.",
-		"Oh, yeah, Akechi! Uh he's a cool guy, at least that's what his instagram looks like. D-don't ask why I was on his instagram."
-		
+		"Oh, yeah, Akechi! Uh he's a cool guy, at least that's what his instagram looks like. D-don't ask why I was on his instagram.",
+		"Man, do NOT talk to that guy before he drinks his coffee…",
+		"One time I saw Akechi throw a printer out the window ‘cuz it wasn’t workin’, and we’ve been friends ever since!",
+		"I bet he’s in pretty good shape from ridin’ his bike around town… wonder if he’d train with me?",
+		"Last week me and Akechi got kicked out of the movies for bein’ too loud. How’s it our fault that dumbass guy just kept goin’ into the basement?!"
 	],
 	"ann": [
 		"Ann wanted to get crepes one time but I didn't wanna tell her no because I'm lactose intolerant so I was just gassy the whole day.",
 		"Don't you think Ann's kinda cute? W-wait don't tell her I said that, ok?",
-		"Ann convinced me to go shopping with her and she made me carry her bags and maaaan I think it was like the hardest I've ever worked my arms. man."
+		"Ann convinced me to go shopping with her and she made me carry her bags and maaaan I think it was like the hardest I've ever worked my arms. man.",
+		"Man, Ann’s so pretty she could be a model… hold up, she’s what?!",
+		"I’ve known Ann since back in middle school. She’s the best!",
+		"Last time Ann helped me bleach my hair, her bathroom was such a freakin’ mess..",
+		"I asked Ann if she could introduce me to any of her model lady friends and she totally kicked my ass"
+
 	],
 	"makoto": [
 		"Makoto's so freakin smart! She taught me how to do those  little numbers are hanging around the top corner of other numbers...What's it called..super multiplication?",
-		"I told Makoto if I read too much my eyesight will get worse and she just left the room."
+		"I told Makoto if I read too much my eyesight will get worse and she just left the room.",
+		"She’s too damn smart for me, man...",
+		"I tried askin’ Makoto what kinda animal the Pink Panther is, and she just left the room. I still don’t freakin’ know.",
+		"Makoto says I ask dumb questions better than anybody she knows! ...Wait a damn second...",
+		"I wonder if Makoto’d let me copy her notes for the test...",
+		"When Makoto talks sometimes I feel like I'm hearin' someone read a Wikipedia article",
+		"Ohhh man seein' her throw punches at Shadows is freakin' badass! You think she'll let me train with her one time?",
+		"Maaaaan have you seen Makoto's biceps? I want guns as big as those one day!"
+
 	],
 	"futaba": [
 		"Maaaan, Futaba keeps kickin' my ass in Smash.",
 		"Futaba told me I had a rare disease called ligma? What is that? Dude, I'm scared!",
-		"Futaba said Akira and I have a strong bromance - what is that? Is that a good thing? Whatever man, I freakin' love that guy!"
+		"Futaba said Akira and I have a strong bromance - what is that? Is that a good thing? Whatever man, I freakin' love that guy!",
+		"Futaba hates it when I used her like an armrest, but man, she’s the perfect freakin’ height.",
+		"I’m not allowed to play Mario Kart with Futaba since I broke the controller last time...",
+		"Every time I try to vent to Futaba she just keeps sayin’ F. What the eff’s that supposed to mean?!",
+		"Futaba can hack anything… Uh… y-you don’t think that means my computer, right?"
 	],
+
 	"yusuke": [
 		"I brought Yusuke to get beef bowls one time and man I didn't think anyone could out eat me but I thought wrong!",
 		"Yusuke's got not business lookin' so damn pretty. W-wait, don't tell him I said that, ok?",
 		"Did ya know Yusuke's pretty ripped??",
 		"I asked Yusuke if he could draw a portrait of ma for her birthday - I'm so psyched!!",
 		"Yusuke asked me what I thought of Picasso and I was like,'like the Pokemon??'",
-		"When he says he forgot to eat I get real worried about 'em sometimes"
+		"When he says he forgot to eat I get real worried about 'em sometimes",
+		"I don’t really get art, but man, that guy’s got some freakin’ skills.",
+		"Yusuke said he had sleep for dinner last night... whatever that means. Anyway, think I’ll treat him to some ramen today!"
+
 	],
 	"haru": [
 		"Man, Haru is so pretty...Huh? Sorry were you sayin' somethin?",
 		"Man, you know what I'm pretty sure Haru-senpai can probably kick my ass.",
-		"Can you believe Haru beat me in arm wrestling once?!"
+		"Can you believe Haru beat me in arm wrestling once?!",
+		"She accidentally hit me with her axe once, but it’s cool. Doc said it was barely even a concussion!",
+		"I heard Haru curse the other day… Shit, am I a bad influence on her?",
+		"Haru’s hair looks really freakin’ soft… Oh shit! Forget I said anything!",
+		"Haru tried to teach me ballet once. I’m gonna become a pro, and then we can dance together!",
+		"Rich girls sure are somethin' man...you think she'd let me be her trophy husband? I-I'm just kidding! Haha. But really though do you think..."
 	]
 }
