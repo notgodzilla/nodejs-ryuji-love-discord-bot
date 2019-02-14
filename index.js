@@ -66,11 +66,18 @@ ryuji.on('message', function(message) {
 
 		if(msgSent.includes('love')) {
 
+
 			var wonderfulWord = Wonderful.random()
 			var getLoveEmoji = msgUtils.trueOrFalse() ? "softryuji" : "ryujilovesyou"
 			var loveEmoji = (message.guild.emojis.find(emoji => emoji.name == getLoveEmoji))
 			message.react(loveEmoji)
-			message.channel.send(`${msgUtils.getRandomMessage(love)} You're freakin' ${wonderfulWord}, man!`)
+
+			if(message.author.tag == "rodi#1607") {
+				message.channel.send(`Rodi!! I love you, bro! ${msgUtils.getRandomMessage(love)} You're freakin' ${wonderfulWord}, man!`)
+			} else {
+				message.channel.send(`${msgUtils.getRandomMessage(love)} You're freakin' ${wonderfulWord}, man!`)
+			}
+
 
 
 		} else if(msgSent.includes('depressed') || msgSent.includes('sad') || msgSent.includes('strength')) {
@@ -82,7 +89,14 @@ ryuji.on('message', function(message) {
 				var wonderfulWord = Wonderful.random()
 				var complimentSentence = msgUtils.getRandomMessage(compliments)
 				var fullSentence = `Hey, ${broWord} ! Don't be sad. You're pretty ${wonderfulWord}! ${complimentSentence}`
-				message.channel.send(fullSentence)
+
+				if(message.author.tag == "rodi#1607") {
+					fullSentence = `Rodi! You've got this, ${broWord} ! Don't be sad. You're pretty ${wonderfulWord}! ${complimentSentence}`
+					message.channel.send(fullSentence)
+				} else {
+					message.channel.send(fullSentence)
+				}
+
 
 			} else {
 				message.channel.send(msgUtils.getRandomMessage(motivational))
